@@ -18,5 +18,6 @@ texture = ExtResource("1_8f0ok")
 position = Vector2(0, -60)
 shape = SubResource("CapsuleShape2D_g4g88")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="."]
+unique_name_in_owner = true
 offset = Vector2(0, -100)
