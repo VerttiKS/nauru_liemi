@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhkiglf3ebisx"]
+[gd_scene load_steps=4 format=3 uid="uid://dhkiglf3ebisx"]
 
 [ext_resource type="PackedScene" uid="uid://danxwb8d54nol" path="res://scenes/test_collision.tscn" id="1_gn8gd"]
 [ext_resource type="PackedScene" uid="uid://bdakjhmeiucku" path="res://scenes/player.tscn" id="2_g27in"]
+[ext_resource type="PackedScene" uid="uid://8ve447rxew48" path="res://scenes/ghost.tscn" id="3_bucvj"]
 
 [node name="TestArea" type="Node2D"]
 
@@ -13,5 +14,20 @@ scale = Vector2(5.47166, 0.845415)
 position = Vector2(1186, 426)
 scale = Vector2(5.47166, 0.845415)
 
+[node name="TestCollision3" parent="." instance=ExtResource("1_gn8gd")]
+position = Vector2(1729, 530)
+scale = Vector2(5.47166, 0.845415)
+
+[node name="TestCollision4" parent="." instance=ExtResource("1_gn8gd")]
+position = Vector2(2352, 425)
+scale = Vector2(5.47166, 0.845415)
+
+[node name="TestCollision5" parent="." instance=ExtResource("1_gn8gd")]
+position = Vector2(1609, 198)
+scale = Vector2(5.60015, 0.192784)
+
 [node name="Player" parent="." instance=ExtResource("2_g27in")]
 position = Vector2(583, 292)
+
+[node name="Ghost" parent="." instance=ExtResource("3_bucvj")]
+position = Vector2(1710, 365)
