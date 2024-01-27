@@ -18,3 +18,11 @@ config/icon="res://icon.svg"
 [dotnet]
 
 project/assembly_name="nauru_liemi"
+
+[physics]
+
+2d/default_gravity=3000.0
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

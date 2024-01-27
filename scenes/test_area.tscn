@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://dhkiglf3ebisx"]
+[gd_scene load_steps=3 format=3 uid="uid://dhkiglf3ebisx"]
+
+[ext_resource type="PackedScene" uid="uid://danxwb8d54nol" path="res://scenes/test_collision.tscn" id="1_gn8gd"]
+[ext_resource type="PackedScene" uid="uid://bdakjhmeiucku" path="res://scenes/player.tscn" id="2_g27in"]
 
 [node name="TestArea" type="Node2D"]
+
+[node name="TestCollision" parent="." instance=ExtResource("1_gn8gd")]
+position = Vector2(582, 520)
+scale = Vector2(5.47166, 0.845415)
+
+[node name="TestCollision2" parent="." instance=ExtResource("1_gn8gd")]
+position = Vector2(1186, 426)
+scale = Vector2(5.47166, 0.845415)
+
+[node name="Player" parent="." instance=ExtResource("2_g27in")]
+position = Vector2(583, 292)
