@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4g88"]
 radius = 28.0
-height = 118.0
+height = 102.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gp60v")
@@ -21,3 +21,6 @@ shape = SubResource("CapsuleShape2D_g4g88")
 [node name="PlayerCamera" type="Camera2D" parent="."]
 unique_name_in_owner = true
 offset = Vector2(0, -100)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.5
