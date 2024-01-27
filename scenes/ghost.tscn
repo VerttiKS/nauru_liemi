@@ -12,6 +12,8 @@ radius = 29.0
 height = 108.0
 
 [node name="Ghost" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_1ulss")
 
 [node name="SizeTest" type="Sprite2D" parent="."]

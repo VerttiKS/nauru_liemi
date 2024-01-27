@@ -67,6 +67,12 @@ attack_down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="tiles"
+2d_physics/layer_3="ghosts"
+
 [physics]
 
 2d/default_gravity=3000.0

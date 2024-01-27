@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdakjhmeiucku"]
+[gd_scene load_steps=5 format=3 uid="uid://bdakjhmeiucku"]
 
 [ext_resource type="Texture2D" uid="uid://cgugsuaold50b" path="res://NauruLiemi_Assets/Temp_Test_Assets/size_test.png" id="1_8f0ok"]
 [ext_resource type="Script" path="res://scenes/scripts/player.gd" id="1_gp60v"]
@@ -7,7 +7,12 @@
 radius = 28.0
 height = 102.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_26dye"]
+radius = 22.0
+height = 90.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_gp60v")
 
 [node name="SizeTest" type="Sprite2D" parent="."]
@@ -24,3 +29,23 @@ offset = Vector2(0, -100)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.5
+
+[node name="Dead" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -84.0
+offset_top = -201.0
+offset_right = 126.0
+offset_bottom = -123.0
+text = "This man is already dead.
+He just doesn't know it yet.
+Ho ho ho, meow!"
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, -62)
+shape = SubResource("CapsuleShape2D_26dye")
+debug_color = Color(0, 0.721569, 0.227451, 0.709804)

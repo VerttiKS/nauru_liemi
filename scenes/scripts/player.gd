@@ -44,5 +44,10 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
+	if %HurtBox.get_overlapping_bodies().size() > 0:
+		death()
 	
 	move_and_slide()
+
+func death():
+	%Dead.visible = true
