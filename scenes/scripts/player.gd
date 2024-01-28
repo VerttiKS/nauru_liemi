@@ -30,16 +30,20 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor(): #normal jump
 			velocity.y = JUMP_VELOCITY
+			%AnimatedWizard.play("jump")
 			double_jump_active = true
 		elif double_jump_active: #double jump
 			speed_modifier = 1
+			#%AnimatedWizard.play("jump")
 			velocity.y = JUMP_VELOCITY
+			%AnimatedWizard.play("spell_down")
 			double_jump_active = false
 	
 	if Input.is_action_pressed("attack_down") and can_throw:
 		#start cooldown
 		can_throw = false
 		%PotionCooldown.start()
+		%AnimatedWizard.play("spell_down")
 		
 		#Throw potion
 		var new_potion = POTION.instantiate()
@@ -54,6 +58,8 @@ func _physics_process(delta):
 		#Throw potion
 		throwing = true
 		%Throwing.start()
+		%AnimatedWizard.flip_h = false #flip right
+		%AnimatedWizard.play("throw")
 		
 		var new_potion = POTION.instantiate()
 		new_potion.global_transform = %PotionRight.global_transform
@@ -67,6 +73,8 @@ func _physics_process(delta):
 		#Throw potion
 		throwing = true
 		%Throwing.start()
+		%AnimatedWizard.flip_h = true #flip left
+		%AnimatedWizard.play("throw")
 		
 		var new_potion = POTION.instantiate()
 		new_potion.global_transform = %PotionLeft.global_transform
@@ -77,8 +85,19 @@ func _physics_process(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction and !throwing:
 		velocity.x = direction * SPEED * speed_modifier
+		
+		if is_on_floor() and !double_jump_active:
+			%AnimatedWizard.play("run")
+		
+		if direction > 0:
+			%AnimatedWizard.flip_h = false #flip right
+		else:
+			%AnimatedWizard.flip_h = true #flip left
+	
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		if velocity.x == 0 and is_on_floor() and !throwing and !double_jump_active:
+			%AnimatedWizard.play("idle")
 	
 	if %HurtBox.get_overlapping_bodies().size() > 0:
 		death()
@@ -100,4 +119,5 @@ func _on_potion_cooldown_timeout():
 
 
 func _on_throwing_timeout():
+	%AnimatedWizard.play("run")
 	throwing = false

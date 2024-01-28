@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2ipgwtxmlck2"
-path="res://.godot/imported/hahmo_anim17.png-f5060d9482c97519d012522670315d93.ctex"
+uid="uid://d2te0dvhna6mi"
+path="res://.godot/imported/Veleho_Sprite.png-48963da7fce9f3a10512a26ab0a1356d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://NauruLiemi_Assets/Velho_Hahmo_Asset/hahmo_anim17.png"
-dest_files=["res://.godot/imported/hahmo_anim17.png-f5060d9482c97519d012522670315d93.ctex"]
+source_file="res://NauruLiemi_Assets/Velho_Hahmo_Asset/Spritesheet/Veleho_Sprite.png"
+dest_files=["res://.godot/imported/Veleho_Sprite.png-48963da7fce9f3a10512a26ab0a1356d.ctex"]
 
 [params]
 

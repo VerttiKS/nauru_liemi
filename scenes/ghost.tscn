@@ -227,7 +227,7 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(0, -65)
 sprite_frames = SubResource("SpriteFrames_urke6")
-frame_progress = 0.298005
+frame_progress = 0.139203
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true

@@ -3,11 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://c7mgrkore2yi1" path="res://NauruLiemi_Assets/Item_Assets/puteli.png" id="1_2xgu5"]
 [ext_resource type="Script" path="res://scenes/scripts/potion.gd" id="1_bwkip"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f7ics"]
-radius = 5.09902
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b6qmj"]
+radius = 9.0
+height = 32.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ef32y"]
-radius = 11.0
+radius = 9.0
+height = 32.0
 
 [node name="Potion" type="RigidBody2D"]
 top_level = true
@@ -21,7 +23,9 @@ position = Vector2(0, -3)
 texture = ExtResource("1_2xgu5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_f7ics")
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_b6qmj")
+debug_color = Color(0.937255, 0, 0.635294, 0.419608)
 
 [node name="HitBox" type="Area2D" parent="."]
 unique_name_in_owner = true
