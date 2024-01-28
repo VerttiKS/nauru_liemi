@@ -13,6 +13,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	%Puteli.rotation += 0.1
+	
 	if %HitBox.get_overlapping_bodies().size() > 0 and !explode:
 		freeze = true
 		explode = true
