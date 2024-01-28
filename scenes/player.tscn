@@ -1,7 +1,23 @@
-[gd_scene load_steps=24 format=3 uid="uid://bdakjhmeiucku"]
+[gd_scene load_steps=28 format=3 uid="uid://bdakjhmeiucku"]
 
 [ext_resource type="Script" path="res://scenes/scripts/player.gd" id="1_gp60v"]
 [ext_resource type="Texture2D" uid="uid://d2te0dvhna6mi" path="res://NauruLiemi_Assets/Velho_Hahmo_Asset/Spritesheet/Veleho_Sprite.png" id="2_q44fr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mbdf"]
+atlas = ExtResource("2_q44fr")
+region = Rect2(2560, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26mp3"]
+atlas = ExtResource("2_q44fr")
+region = Rect2(2688, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvdbl"]
+atlas = ExtResource("2_q44fr")
+region = Rect2(2816, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymi8s"]
+atlas = ExtResource("2_q44fr")
+region = Rect2(2944, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a1rc1"]
 atlas = ExtResource("2_q44fr")
@@ -77,6 +93,23 @@ region = Rect2(1920, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6cwug"]
 animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_4mbdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26mp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvdbl")
+}, {
+"duration": 1000.0,
+"texture": SubResource("AtlasTexture_ymi8s")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a1rc1")
@@ -176,12 +209,12 @@ script = ExtResource("1_gp60v")
 
 [node name="AnimatedWizard" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -63)
+position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_6cwug")
-animation = &"super_jump"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -59)
+position = Vector2(0, -58)
 shape = SubResource("CapsuleShape2D_g4g88")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
@@ -191,23 +224,12 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_top_margin = 0.5
 
-[node name="Dead" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-offset_left = -84.0
-offset_top = -201.0
-offset_right = 126.0
-offset_bottom = -123.0
-text = "This man is already dead.
-He just doesn't know it yet.
-Ho ho ho, meow!"
-
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -58)
+position = Vector2(0, -57)
 shape = SubResource("CapsuleShape2D_26dye")
 debug_color = Color(0, 0.721569, 0.227451, 0.709804)
 

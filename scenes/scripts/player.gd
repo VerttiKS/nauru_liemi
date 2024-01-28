@@ -9,6 +9,9 @@ var double_jump_active = false
 var super_jumping = false
 var can_throw = true
 var throwing = false
+var dead = false
+
+signal main_death
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -17,6 +20,10 @@ const DOUBLE_JUMP_PARTICLE = preload("res://NauruLiemi_Assets/VFX_Assets/scenes/
 const POTION = preload("res://scenes/potion.tscn")
 
 func _physics_process(delta):
+	
+	if dead:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -109,6 +116,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func on_explosion():
+	
+	if dead:
+		return
+	
 	%AnimatedWizard.play("super_jump")
 	super_jumping = true
 	speed_modifier = 0.5
@@ -116,7 +127,10 @@ func on_explosion():
 	velocity.y = SUPER_JUMP_VELOCITY
 
 func death():
-	%Dead.visible = true
+	dead = true
+	%AnimatedWizard.play("death")
+	main_death.emit()
+	
 
 
 func _on_potion_cooldown_timeout():
