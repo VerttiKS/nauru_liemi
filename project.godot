@@ -15,6 +15,7 @@ run/main_scene="res://scenes/title_screen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://NauruLiemi_Assets/UI_Assets/icon1.png"
+config/windows_native_icon="res://NauruLiemi_Assets/UI_Assets/icon.ico"
 
 [display]
 
