@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdakjhmeiucku"]
+[gd_scene load_steps=24 format=3 uid="uid://bdakjhmeiucku"]
 
 [ext_resource type="Script" path="res://scenes/scripts/player.gd" id="1_gp60v"]
 [ext_resource type="Texture2D" uid="uid://d2te0dvhna6mi" path="res://NauruLiemi_Assets/Velho_Hahmo_Asset/Spritesheet/Veleho_Sprite.png" id="2_q44fr"]
@@ -58,6 +58,10 @@ region = Rect2(896, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vw35u"]
 atlas = ExtResource("2_q44fr")
 region = Rect2(2304, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qce3p"]
+atlas = ExtResource("2_q44fr")
+region = Rect2(2048, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8ro1"]
 atlas = ExtResource("2_q44fr")
@@ -137,6 +141,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qce3p")
+}],
+"loop": true,
+"name": &"super_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_b8ro1")
 }, {
 "duration": 1.0,
@@ -166,7 +178,7 @@ script = ExtResource("1_gp60v")
 unique_name_in_owner = true
 position = Vector2(0, -63)
 sprite_frames = SubResource("SpriteFrames_6cwug")
-animation = &"spell_down"
+animation = &"super_jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -59)
@@ -224,5 +236,10 @@ unique_name_in_owner = true
 wait_time = 0.25
 one_shot = true
 
+[node name="SuperJumpTime" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
 [connection signal="timeout" from="PotionCooldown" to="." method="_on_potion_cooldown_timeout"]
 [connection signal="timeout" from="Throwing" to="." method="_on_throwing_timeout"]
+[connection signal="timeout" from="SuperJumpTime" to="." method="_on_super_jump_time_timeout"]

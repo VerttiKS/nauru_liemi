@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3 uid="uid://mpowa7m4ycr0"]
+
+[ext_resource type="Script" path="res://NauruLiemi_Assets/VFX_Assets/scenes/double_jump.gd" id="1_wk1gi"]
+[ext_resource type="Texture2D" uid="uid://dxojmvtm870ag" path="res://NauruLiemi_Assets/VFX_Assets/poof.png" id="1_yuldj"]
+[ext_resource type="Texture2D" uid="uid://bgf412l5nagf4" path="res://NauruLiemi_Assets/VFX_Assets/magic.png" id="2_4757x"]
+
+[sub_resource type="Curve" id="Curve_od8qj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sfv64"]
+curve = SubResource("Curve_od8qj")
+
+[sub_resource type="Curve" id="Curve_xx3ym"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ufs5m"]
+curve = SubResource("Curve_xx3ym")
+
+[sub_resource type="Curve" id="Curve_3tu2s"]
+_data = [Vector2(0, 0.406593), 0.0, 0.0, 0, 0, Vector2(0.202703, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_butwi"]
+curve = SubResource("Curve_3tu2s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bcvl7"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 1.0
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 98, 0)
+damping_min = 20.455
+damping_max = 20.455
+damping_curve = SubResource("CurveTexture_ufs5m")
+scale_curve = SubResource("CurveTexture_butwi")
+color = Color(0.724253, 0.768232, 0.859353, 1)
+alpha_curve = SubResource("CurveTexture_sfv64")
+
+[sub_resource type="Curve" id="Curve_ibcpt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.043956), 2.4499, 2.4499, 0, 0, Vector2(2e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.493243, 1), 0.0, 0.0, 0, 0, Vector2(0.722973, 0.021978), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_uym3v"]
+curve = SubResource("Curve_ibcpt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6cro5"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 35.91
+direction = Vector3(0, 1, 0)
+spread = 15.318
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 98, 0)
+damping_min = 20.455
+damping_max = 20.455
+damping_curve = SubResource("CurveTexture_ufs5m")
+scale_curve = SubResource("CurveTexture_butwi")
+alpha_curve = SubResource("CurveTexture_uym3v")
+
+[node name="DoubleJump" type="Node2D"]
+top_level = true
+script = ExtResource("1_wk1gi")
+
+[node name="CloudParticles" type="GPUParticles2D" parent="."]
+position = Vector2(6, -2)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_bcvl7")
+texture = ExtResource("1_yuldj")
+one_shot = true
+
+[node name="StarParticles" type="GPUParticles2D" parent="."]
+position = Vector2(6, -2)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_6cro5")
+texture = ExtResource("2_4757x")
+one_shot = true
+explosiveness = 0.9
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.74
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

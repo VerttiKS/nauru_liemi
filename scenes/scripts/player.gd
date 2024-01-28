@@ -12,6 +12,7 @@ var throwing = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+const DOUBLE_JUMP_PARTICLE = preload("res://NauruLiemi_Assets/VFX_Assets/scenes/double_jump.tscn")
 
 const POTION = preload("res://scenes/potion.tscn")
 
@@ -34,9 +35,12 @@ func _physics_process(delta):
 			double_jump_active = true
 		elif double_jump_active: #double jump
 			speed_modifier = 1
-			#%AnimatedWizard.play("jump")
 			velocity.y = JUMP_VELOCITY
+			
 			%AnimatedWizard.play("spell_down")
+			var new_jump_particle= DOUBLE_JUMP_PARTICLE.instantiate()
+			new_jump_particle.global_position = %PotionRight.global_position
+			add_child(new_jump_particle)
 			double_jump_active = false
 	
 	if Input.is_action_pressed("attack_down") and can_throw:
@@ -105,6 +109,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func on_explosion():
+	%AnimatedWizard.play("super_jump")
 	super_jumping = true
 	speed_modifier = 0.5
 	double_jump_active = true
