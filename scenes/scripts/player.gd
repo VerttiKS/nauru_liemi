@@ -12,6 +12,7 @@ var throwing = false
 var dead = false
 
 signal main_death
+signal victory
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -131,6 +132,9 @@ func death():
 	%AnimatedWizard.play("death")
 	main_death.emit()
 	
+
+func win():
+	victory.emit()
 
 
 func _on_potion_cooldown_timeout():

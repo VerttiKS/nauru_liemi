@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnvo0xycqfpjq"]
+
+[ext_resource type="Script" path="res://scenes/scripts/win_collision.gd" id="1_1v4w0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rkn8"]
+
+[node name="WinCollision" type="Area2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_1v4w0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8rkn8")
+debug_color = Color(0.709804, 0.486275, 0, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
