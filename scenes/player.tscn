@@ -58,7 +58,7 @@ rotation = -0.523599
 [node name="PotionLeft" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-8, -98)
-rotation = -2.44346
+rotation = -2.61799
 
 [node name="PotionDown" type="Marker2D" parent="."]
 unique_name_in_owner = true
