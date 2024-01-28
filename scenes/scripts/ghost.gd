@@ -11,10 +11,12 @@ func _physics_process(delta):
 	if not is_on_floor() and !dying:
 		velocity.y += gravity * delta
 		
-	if is_on_wall():
+	%RayCast2D.force_raycast_update()
+	if is_on_wall() or !%RayCast2D.is_colliding():
 		direction *= -1
 	
 	if !dying:
+		%RayCast2D.position.x = direction * 50
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = 0

@@ -31,3 +31,9 @@ position = Vector2(583, 292)
 
 [node name="Ghost" parent="." instance=ExtResource("3_bucvj")]
 position = Vector2(1710, 365)
+
+[node name="Ghost2" parent="." instance=ExtResource("3_bucvj")]
+position = Vector2(760, 387)
+
+[node name="Ghost3" parent="." instance=ExtResource("3_bucvj")]
+position = Vector2(1386, 93)
