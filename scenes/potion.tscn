@@ -1,17 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxqflg7lw52ov"]
+[gd_scene load_steps=5 format=3 uid="uid://btcyyo2shvb10"]
 
 [ext_resource type="Texture2D" uid="uid://c7mgrkore2yi1" path="res://NauruLiemi_Assets/Item_Assets/puteli.png" id="1_2xgu5"]
+[ext_resource type="Script" path="res://scenes/scripts/potion.gd" id="1_bwkip"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a6p3i"]
-radius = 12.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_f7ics"]
+radius = 5.09902
 
-[node name="Potion" type="Area2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ef32y"]
+radius = 11.0
+
+[node name="Potion" type="RigidBody2D"]
+top_level = true
 collision_layer = 8
 collision_mask = 6
+script = ExtResource("1_bwkip")
 
 [node name="Puteli" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
+unique_name_in_owner = true
+position = Vector2(0, -3)
 texture = ExtResource("1_2xgu5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_a6p3i")
+shape = SubResource("CircleShape2D_f7ics")
+
+[node name="HitBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_ef32y")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

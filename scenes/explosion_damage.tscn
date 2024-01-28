@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://fsm6482p8qcn"]
+
+[ext_resource type="PackedScene" uid="uid://b6myiboartevr" path="res://NauruLiemi_Assets/VFX_Assets/scenes/explosion.tscn" id="1_66nm2"]
+[ext_resource type="Script" path="res://scenes/scripts/explosion_damage.gd" id="1_j1v8v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0y6wj"]
+radius = 29.0172
+
+[node name="ExplosionDamage" type="Area2D"]
+top_level = true
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_j1v8v")
+
+[node name="ExplosionArea" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_0y6wj")
+
+[node name="Explosion" parent="." instance=ExtResource("1_66nm2")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

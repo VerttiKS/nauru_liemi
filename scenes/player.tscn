@@ -49,3 +49,31 @@ collision_mask = 4
 position = Vector2(-1, -62)
 shape = SubResource("CapsuleShape2D_26dye")
 debug_color = Color(0, 0.721569, 0.227451, 0.709804)
+
+[node name="PotionRight" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(6, -98)
+rotation = -0.523599
+
+[node name="PotionLeft" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-8, -98)
+rotation = -2.44346
+
+[node name="PotionDown" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -37)
+rotation = 1.5708
+
+[node name="PotionCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.75
+one_shot = true
+
+[node name="Throwing" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="PotionCooldown" to="." method="_on_potion_cooldown_timeout"]
+[connection signal="timeout" from="Throwing" to="." method="_on_throwing_timeout"]

@@ -73,6 +73,7 @@ attack_down={
 2d_physics/layer_2="tiles"
 2d_physics/layer_3="ghosts"
 2d_physics/layer_4="potion"
+2d_physics/layer_5="explosion"
 
 [physics]
 
