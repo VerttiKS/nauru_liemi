@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bppllsbbm5bus"]
+
+[ext_resource type="Script" path="res://scenes/scripts/win_screen.gd" id="1_b25tl"]
+[ext_resource type="Texture2D" uid="uid://eohr3grq0as6" path="res://NauruLiemi_Assets/UI_Assets/End_Screen_BG.png" id="1_n32jk"]
+[ext_resource type="Texture2D" uid="uid://df6nbggng7f5h" path="res://NauruLiemi_Assets/UI_Assets/End_Screen_BG_TEXT.png" id="2_klfek"]
+
+[node name="WinScreen" type="Node2D"]
+script = ExtResource("1_b25tl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="EndScreenBg" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(803, 523)
+scale = Vector2(1.3375, 1.3375)
+texture = ExtResource("1_n32jk")
+
+[node name="EndScreenBgText" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(815, 334)
+scale = Vector2(1.5275, 1.5275)
+texture = ExtResource("2_klfek")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://bexsjl1oxuye5"]
+
+[ext_resource type="Texture2D" uid="uid://dpjp0bi3ql82" path="res://NauruLiemi_Assets/UI_Assets/Start_BG_transparent_real.png" id="1_0jsp0"]
+[ext_resource type="Texture2D" uid="uid://41jvp1kgit0d" path="res://NauruLiemi_Assets/UI_Assets/Start_BG_Button_Quit.png" id="1_0rebr"]
+[ext_resource type="Script" path="res://scenes/scripts/title_screen.gd" id="1_2pmd2"]
+[ext_resource type="Texture2D" uid="uid://c2itt270sroie" path="res://NauruLiemi_Assets/UI_Assets/Start_BG_Logo.png" id="1_df0ec"]
+[ext_resource type="Texture2D" uid="uid://j0lgptlg1n1f" path="res://NauruLiemi_Assets/UI_Assets/Start_BG_Button_Start.png" id="2_fvhah"]
+
+[node name="TitleScreen" type="Node2D"]
+scale = Vector2(0.969072, 1)
+script = ExtResource("1_2pmd2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.607843, 0.631373, 0.372549, 1)
+
+[node name="StartBgLogo" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(628, 462)
+scale = Vector2(0.969072, 1)
+texture = ExtResource("1_df0ec")
+
+[node name="StartBgButtonQuit" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1247, 866)
+scale = Vector2(0.969072, 1)
+texture = ExtResource("1_0rebr")
+
+[node name="StartBgButtonStart" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(825, 560)
+scale = Vector2(0.969072, 1)
+texture = ExtResource("2_fvhah")
+
+[node name="StartBgTransparentReal" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(287, 605)
+scale = Vector2(0.969072, 1)
+texture = ExtResource("1_0jsp0")
+
+[node name="Play" type="Button" parent="CanvasLayer"]
+offset_left = 770.0
+offset_top = 618.0
+offset_right = 778.0
+offset_bottom = 626.0
+scale = Vector2(42.0562, -36.0345)
+flat = true
+
+[node name="Quit" type="Button" parent="CanvasLayer"]
+offset_left = 1210.0
+offset_top = 929.0
+offset_right = 1218.0
+offset_bottom = 937.0
+scale = Vector2(42.0562, -36.0345)
+flat = true
+
+[connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]

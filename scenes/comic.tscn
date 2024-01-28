@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyp00b0beu0ph"]
+
+[ext_resource type="Texture2D" uid="uid://crgqxfdll5ixr" path="res://NauruLiemi_Assets/UI_Assets/Start_Intro.png" id="1_ht2nk"]
+[ext_resource type="Script" path="res://scenes/scripts/comic.gd" id="1_pfbre"]
+
+[node name="Comic" type="Node2D"]
+script = ExtResource("1_pfbre")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StartIntro" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(801, 446)
+scale = Vector2(1.405, 1.405)
+texture = ExtResource("1_ht2nk")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

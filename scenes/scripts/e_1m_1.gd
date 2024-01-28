@@ -26,6 +26,6 @@ func _on_wait_time_timeout():
 	
 	if time == 5:
 		if death:
-			get_tree().change_scene_to_file("res://scenes/e_1m_1.tscn")
+			get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
 		if win:
-			get_tree().change_scene_to_file("res://scenes/e_1m_1.tscn")
+			get_tree().change_scene_to_file("res://scenes/win_screen.tscn")
