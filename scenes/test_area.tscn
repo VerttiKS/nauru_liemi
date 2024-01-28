@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhkiglf3ebisx"]
+[gd_scene load_steps=5 format=3 uid="uid://dhkiglf3ebisx"]
 
 [ext_resource type="PackedScene" uid="uid://danxwb8d54nol" path="res://scenes/test_collision.tscn" id="1_gn8gd"]
 [ext_resource type="PackedScene" uid="uid://bdakjhmeiucku" path="res://scenes/player.tscn" id="2_g27in"]
 [ext_resource type="PackedScene" uid="uid://8ve447rxew48" path="res://scenes/ghost.tscn" id="3_bucvj"]
+[ext_resource type="PackedScene" uid="uid://b6myiboartevr" path="res://NauruLiemi_Assets/VFX_Assets/scenes/explosion.tscn" id="4_hroqh"]
 
 [node name="TestArea" type="Node2D"]
 
@@ -31,3 +32,6 @@ position = Vector2(583, 292)
 
 [node name="Ghost" parent="." instance=ExtResource("3_bucvj")]
 position = Vector2(1710, 365)
+
+[node name="Explosion" parent="." instance=ExtResource("4_hroqh")]
+position = Vector2(791, 230)

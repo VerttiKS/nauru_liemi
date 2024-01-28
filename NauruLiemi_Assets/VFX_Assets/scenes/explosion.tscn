@@ -1,0 +1,142 @@
+[gd_scene load_steps=15 format=3 uid="uid://b6myiboartevr"]
+
+[ext_resource type="Texture2D" uid="uid://dxojmvtm870ag" path="res://NauruLiemi_Assets/VFX_Assets/poof.png" id="1_6d4bc"]
+[ext_resource type="Script" path="res://NauruLiemi_Assets/VFX_Assets/scenes/explosion.gd" id="1_dhf4q"]
+[ext_resource type="Texture2D" uid="uid://bgf412l5nagf4" path="res://NauruLiemi_Assets/VFX_Assets/magic.png" id="2_8tced"]
+
+[sub_resource type="Curve" id="Curve_xyckd"]
+_data = [Vector2(0, 0.802198), 0.0, 0.0, 0, 0, Vector2(0.773333, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_txy2d"]
+curve = SubResource("Curve_xyckd")
+
+[sub_resource type="Curve" id="Curve_moh4x"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 23.0769), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8rwkh"]
+curve = SubResource("Curve_moh4x")
+
+[sub_resource type="Curve" id="Curve_s8ddr"]
+_data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(0.146667, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vl6ot"]
+curve = SubResource("Curve_s8ddr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0byok"]
+particle_flag_disable_z = true
+direction = Vector3(0, -0.1, 0)
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, -40, 0)
+damping_min = 5.618
+damping_max = 5.618
+damping_curve = SubResource("CurveTexture_8rwkh")
+scale_curve = SubResource("CurveTexture_vl6ot")
+color = Color(0.796078, 0.639216, 0, 1)
+alpha_curve = SubResource("CurveTexture_txy2d")
+
+[sub_resource type="Curve" id="Curve_pdrfj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ngbkr"]
+curve = SubResource("Curve_pdrfj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n8aji"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 60.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, -5, 0)
+color = Color(1, 0.913725, 0.32549, 1)
+alpha_curve = SubResource("CurveTexture_ngbkr")
+
+[sub_resource type="Curve" id="Curve_ra65q"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_dhf4q")
+
+[node name="OrangeCloud" type="GPUParticles2D" parent="."]
+scale = Vector2(1.00253, 1)
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_0byok")
+texture = ExtResource("1_6d4bc")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="Sparks" type="GPUParticles2D" parent="."]
+scale = Vector2(1.00253, 1)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_n8aji")
+texture = ExtResource("2_8tced")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="OrangeShards" type="CPUParticles2D" parent="."]
+scale = Vector2(1.00334, 1)
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 16.0
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 50.51
+initial_velocity_max = 121.23
+damping_curve = SubResource("Curve_ra65q")
+angle_max = 360.0
+scale_amount_max = 8.0
+color = Color(0.796078, 0.423529, 0, 1)
+
+[node name="DarkShards" type="CPUParticles2D" parent="."]
+scale = Vector2(1.00334, 1)
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 16.0
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 50.51
+initial_velocity_max = 121.23
+damping_curve = SubResource("Curve_ra65q")
+angle_max = 360.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0.133333, 0.133333, 0.156863, 1)
+
+[node name="Cork" type="CPUParticles2D" parent="."]
+scale = Vector2(1.00334, 1)
+emitting = false
+amount = 1
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 25.45
+gravity = Vector2(0, 800)
+initial_velocity_min = 272.73
+initial_velocity_max = 272.73
+damping_curve = SubResource("Curve_ra65q")
+angle_max = 360.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0.313726, 0.231373, 0.207843, 1)

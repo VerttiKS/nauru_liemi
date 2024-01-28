@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxqflg7lw52ov"]
+
+[ext_resource type="Texture2D" uid="uid://c7mgrkore2yi1" path="res://NauruLiemi_Assets/Item_Assets/puteli.png" id="1_2xgu5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a6p3i"]
+radius = 12.0
+
+[node name="Potion" type="Area2D"]
+collision_layer = 8
+collision_mask = 6
+
+[node name="Puteli" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_2xgu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a6p3i")
