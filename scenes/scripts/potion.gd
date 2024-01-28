@@ -8,6 +8,7 @@ var explode = false
 func _ready():
 	var direction = Vector2.RIGHT.rotated(rotation)
 	set_axis_velocity(direction * FLIGHT_SPEED)
+	%ThrowSound.play()
 
 
 

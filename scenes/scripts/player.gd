@@ -41,10 +41,12 @@ func _physics_process(delta):
 			velocity.y = JUMP_VELOCITY
 			%AnimatedWizard.play("jump")
 			double_jump_active = true
+			%JumpSound.play()
 		elif double_jump_active: #double jump
 			speed_modifier = 1
 			velocity.y = JUMP_VELOCITY
 			
+			%DoubleJumpSound.play()
 			%AnimatedWizard.play("spell_down")
 			var new_jump_particle= DOUBLE_JUMP_PARTICLE.instantiate()
 			new_jump_particle.global_position = %PotionRight.global_position
@@ -130,10 +132,12 @@ func on_explosion():
 func death():
 	dead = true
 	%AnimatedWizard.play("death")
+	%DeathSound.play()
 	main_death.emit()
 	
 
-func win():
+func winner():
+	dead = true
 	victory.emit()
 
 

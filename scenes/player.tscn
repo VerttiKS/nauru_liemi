@@ -1,7 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://bdakjhmeiucku"]
+[gd_scene load_steps=31 format=3 uid="uid://bdakjhmeiucku"]
 
 [ext_resource type="Script" path="res://scenes/scripts/player.gd" id="1_gp60v"]
 [ext_resource type="Texture2D" uid="uid://d2te0dvhna6mi" path="res://NauruLiemi_Assets/Velho_Hahmo_Asset/Spritesheet/Veleho_Sprite.png" id="2_q44fr"]
+[ext_resource type="AudioStream" uid="uid://da1gdq4vxs82i" path="res://NauruLiemi_Assets/Sounds_Assets/jump.wav" id="3_rsme4"]
+[ext_resource type="AudioStream" uid="uid://cohsbcriijxc6" path="res://NauruLiemi_Assets/Sounds_Assets/doublejump.wav" id="5_fut5o"]
+[ext_resource type="AudioStream" uid="uid://bt0i185b7nxcc" path="res://NauruLiemi_Assets/Sounds_Assets/death.wav" id="6_fihvo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mbdf"]
 atlas = ExtResource("2_q44fr")
@@ -261,6 +264,21 @@ one_shot = true
 [node name="SuperJumpTime" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_rsme4")
+volume_db = -10.0
+
+[node name="DoubleJumpSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_fut5o")
+volume_db = -10.0
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_fihvo")
+volume_db = -10.0
 
 [connection signal="timeout" from="PotionCooldown" to="." method="_on_potion_cooldown_timeout"]
 [connection signal="timeout" from="Throwing" to="." method="_on_throwing_timeout"]

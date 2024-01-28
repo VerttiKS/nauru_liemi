@@ -2,6 +2,9 @@ extends Area2D
 
 var times = 0
 
+func _ready():
+	%ExplosionSound.play()
+
 func _on_body_entered(body):
 	if body.has_method("on_explosion"):
 		body.on_explosion()

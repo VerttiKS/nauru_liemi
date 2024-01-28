@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://btcyyo2shvb10"]
+[gd_scene load_steps=6 format=3 uid="uid://btcyyo2shvb10"]
 
 [ext_resource type="Texture2D" uid="uid://c7mgrkore2yi1" path="res://NauruLiemi_Assets/Item_Assets/puteli.png" id="1_2xgu5"]
 [ext_resource type="Script" path="res://scenes/scripts/potion.gd" id="1_bwkip"]
+[ext_resource type="AudioStream" uid="uid://br5sn62ndojhg" path="res://NauruLiemi_Assets/Sounds_Assets/throw.wav" id="3_ogmcr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b6qmj"]
 radius = 9.0
@@ -40,5 +41,9 @@ shape = SubResource("CapsuleShape2D_ef32y")
 unique_name_in_owner = true
 wait_time = 2.5
 one_shot = true
+
+[node name="ThrowSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_ogmcr")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
