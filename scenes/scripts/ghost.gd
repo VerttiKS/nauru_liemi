@@ -4,9 +4,19 @@ const SPEED = 200.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dying = false
 var direction = 1
+var rng = RandomNumberGenerator.new()
 
 func _ready():
-	%AnimatedGhostSad.play("default")
+	var ghostColor = randi_range(1, 3)
+	match ghostColor:
+		1:
+			%AnimatedGhostSad.play("green")
+		2:
+			%AnimatedGhostSad.play("red")
+		_:
+			%AnimatedGhostSad.play("blue")
+	
+	
 
 
 func _physics_process(delta):
@@ -36,9 +46,7 @@ func on_explosion():
 	dying = true
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	%CollisionShape2D.set_deferred("disabled", true)
-	%AnimatedGhostSad.visible = false
-	%AnimatedGhostHappy.play("default")
-	%AnimatedGhostHappy.visible = true
+	%AnimatedGhostSad.play("death")
 	%GhostHappySound.play()
 	%DeathTimer.start()
 

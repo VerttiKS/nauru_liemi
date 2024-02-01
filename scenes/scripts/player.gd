@@ -22,8 +22,6 @@ const POTION = preload("res://scenes/potion.tscn")
 
 func _physics_process(delta):
 	
-	if dead:
-		return
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -34,7 +32,11 @@ func _physics_process(delta):
 			speed_modifier = 1
 		else:
 			super_jumping = false
-
+	
+	if dead:
+		move_and_slide()
+		return
+	
 	# Handle jump and double jump.
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor(): #normal jump
