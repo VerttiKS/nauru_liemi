@@ -3,3 +3,7 @@
 
 ## Running
 Simply download the "NauruLiemi.exe" and click it
+
+
+## Gameplay
+Use WASD to move. Use arrow keys to shoot.
