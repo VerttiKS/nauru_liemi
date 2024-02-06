@@ -63,7 +63,6 @@ scale_curve = SubResource("CurveTexture_butwi")
 alpha_curve = SubResource("CurveTexture_uym3v")
 
 [node name="DoubleJump" type="Node2D"]
-top_level = true
 script = ExtResource("1_wk1gi")
 
 [node name="CloudParticles" type="GPUParticles2D" parent="."]

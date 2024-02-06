@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwxoa3ylnce68"]
+[gd_scene load_steps=8 format=3 uid="uid://cwxoa3ylnce68"]
 
 [ext_resource type="Texture2D" uid="uid://dxojmvtm870ag" path="res://NauruLiemi_Assets/VFX_Assets/poof.png" id="1_kyxna"]
 [ext_resource type="Script" path="res://NauruLiemi_Assets/VFX_Assets/scenes/super_jump.gd" id="1_r76rs"]
@@ -10,6 +10,14 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_7m7yj"]
 curve = SubResource("Curve_y5cny")
 
+[sub_resource type="Curve" id="Curve_2mnn0"]
+max_value = 2.0
+_data = [Vector2(0, 0.967033), 0.0, 0.0, 0, 0, Vector2(1, 1.67033), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5crl0"]
+curve = SubResource("Curve_2mnn0")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t5pyk"]
 particle_flag_disable_z = true
 direction = Vector3(0, 1, 0)
@@ -17,22 +25,25 @@ spread = 8.182
 initial_velocity_min = 181.82
 initial_velocity_max = 181.82
 gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_5crl0")
+scale_over_velocity_max = 568.18
 color = Color(0.905882, 0.682353, 0, 1)
 alpha_curve = SubResource("CurveTexture_7m7yj")
 
 [node name="super_jump" type="Node2D"]
-top_level = true
 script = ExtResource("1_r76rs")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(9, 0)
 emitting = false
-amount = 9
+amount = 30
 process_material = SubResource("ParticleProcessMaterial_t5pyk")
 texture = ExtResource("1_kyxna")
+lifetime = 0.35
 one_shot = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
+one_shot = true
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -214,7 +214,7 @@ script = ExtResource("1_gp60v")
 unique_name_in_owner = true
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_6cwug")
-animation = &"idle"
+animation = &"spell_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -58)
@@ -246,9 +246,14 @@ unique_name_in_owner = true
 position = Vector2(-8, -98)
 rotation = -2.61799
 
-[node name="PotionDown" type="Marker2D" parent="."]
+[node name="PotionDown1" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -37)
+position = Vector2(-28, -38)
+rotation = 1.5708
+
+[node name="PotionDown2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(22, -38)
 rotation = 1.5708
 
 [node name="PotionCooldown" type="Timer" parent="."]

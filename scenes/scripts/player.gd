@@ -17,6 +17,7 @@ signal victory
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const DOUBLE_JUMP_PARTICLE = preload("res://NauruLiemi_Assets/VFX_Assets/scenes/double_jump.tscn")
+const SUPER_JUMP_PARTICLE = preload("res://NauruLiemi_Assets/VFX_Assets/scenes/super_jump.tscn")
 
 const POTION = preload("res://scenes/potion.tscn")
 
@@ -34,6 +35,7 @@ func _physics_process(delta):
 			super_jumping = false
 	
 	if dead:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 		move_and_slide()
 		return
 	
@@ -50,9 +52,12 @@ func _physics_process(delta):
 			
 			%DoubleJumpSound.play()
 			%AnimatedWizard.play("spell_down")
-			var new_jump_particle= DOUBLE_JUMP_PARTICLE.instantiate()
-			new_jump_particle.global_position = %PotionRight.global_position
-			add_child(new_jump_particle)
+			var new_jump_particle1= DOUBLE_JUMP_PARTICLE.instantiate()
+			var new_jump_particle2= DOUBLE_JUMP_PARTICLE.instantiate()
+			add_child(new_jump_particle1)
+			add_child(new_jump_particle2)
+			new_jump_particle1.global_position = %PotionDown1.global_position
+			new_jump_particle2.global_position = %PotionDown2.global_position
 			double_jump_active = false
 	
 	if Input.is_action_pressed("attack_down") and can_throw:
@@ -62,9 +67,12 @@ func _physics_process(delta):
 		%AnimatedWizard.play("spell_down")
 		
 		#Throw potion
-		var new_potion = POTION.instantiate()
-		new_potion.global_transform = %PotionDown.global_transform
-		%PotionDown.add_child(new_potion)
+		var new_potion1 = POTION.instantiate()
+		var new_potion2 = POTION.instantiate()
+		new_potion1.global_transform = %PotionDown1.global_transform
+		new_potion2.global_transform = %PotionDown2.global_transform
+		%PotionDown1.add_child(new_potion1)
+		%PotionDown2.add_child(new_potion2)
 	
 	if Input.is_action_pressed("attack_right") and can_throw and is_on_floor():
 		#start cooldown
@@ -130,6 +138,10 @@ func on_explosion():
 	speed_modifier = 0.5
 	double_jump_active = true
 	velocity.y = SUPER_JUMP_VELOCITY
+	
+	var new_jump_particle= SUPER_JUMP_PARTICLE.instantiate()
+	add_child(new_jump_particle)
+	new_jump_particle.global_position = self.global_position
 
 func death():
 	dead = true
