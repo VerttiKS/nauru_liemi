@@ -1,10 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://bexsjl1oxuye5"]
+[gd_scene load_steps=16 format=3 uid="uid://bexsjl1oxuye5"]
 
 [ext_resource type="Texture2D" uid="uid://dpjp0bi3ql82" path="res://NauruLiemi_Assets/UI_Assets/Start_BG_transparent_real.png" id="1_0jsp0"]
 [ext_resource type="Texture2D" uid="uid://41jvp1kgit0d" path="res://NauruLiemi_Assets/UI_Assets/Start_BG_Button_Quit.png" id="1_0rebr"]
 [ext_resource type="Script" path="res://scenes/scripts/title_screen.gd" id="1_2pmd2"]
 [ext_resource type="Texture2D" uid="uid://c2itt270sroie" path="res://NauruLiemi_Assets/UI_Assets/Start_BG_Logo.png" id="1_df0ec"]
 [ext_resource type="Texture2D" uid="uid://j0lgptlg1n1f" path="res://NauruLiemi_Assets/UI_Assets/Start_BG_Button_Start.png" id="2_fvhah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gv64p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlta1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7fk1f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ktme5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wgm1r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qnngk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8kai4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7kpr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rby5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbp34"]
 
 [node name="TitleScreen" type="Node2D"]
 scale = Vector2(0.969072, 1)
@@ -48,6 +68,11 @@ offset_top = 618.0
 offset_right = 778.0
 offset_bottom = 626.0
 scale = Vector2(42.0562, -36.0345)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gv64p")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mlta1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7fk1f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ktme5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wgm1r")
 flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer"]
@@ -56,6 +81,11 @@ offset_top = 929.0
 offset_right = 1218.0
 offset_bottom = 937.0
 scale = Vector2(42.0562, -36.0345)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qnngk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8kai4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_s7kpr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0rby5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbp34")
 flat = true
 
 [connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
